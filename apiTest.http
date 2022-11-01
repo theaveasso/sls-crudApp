@@ -1,0 +1,24 @@
+@host = https://wi1ns6zxjf.execute-api.ap-southeast-1.amazonaws.com
+
+GET {{host}}/getItems
+
+###
+# @name newItem
+POST {{host}}/createItem
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Iphone14",
+  "description": "Newest and fast smartphone in 2022"
+}
+
+###
+PUT {{host}}/getItems/10
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Iphone14",
+  "description": "Newest and fast smartphone in 2022"
+}
