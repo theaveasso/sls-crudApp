@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
 import functions from '@functions/index';
+import dynamoResources from 'src/model/dynamoResources';
 
 const serverlessConfiguration: AWS = {
 	service: 'sls-crudapp',
@@ -9,7 +10,7 @@ const serverlessConfiguration: AWS = {
 	provider: {
 		name: 'aws',
 		runtime: 'nodejs16.x',
-		profile: 'default',
+		profile: 'theaveasso',
 		region: 'ap-southeast-1',
 		logRetentionInDays: 1,
 		apiGateway: {
@@ -23,6 +24,11 @@ const serverlessConfiguration: AWS = {
 	},
 	// import the function via paths
 	functions,
+	resources: {
+		Resources: {
+			...dynamoResources
+		}
+	},
 	package: { individually: true },
 	custom: {
 		esbuild: {
