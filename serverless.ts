@@ -21,7 +21,7 @@ const serverlessConfiguration: AWS = {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
 			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
 
-			TASKS_TABLE: '!Ref TasksTable'
+			ITEM_TABLE: '${self:custom.itemsTableName}'
 		},
 	},
 	// import the function via paths
@@ -34,7 +34,7 @@ const serverlessConfiguration: AWS = {
 	package: { individually: true },
 	custom: {
 		
-		itemTableName: '${sls:stage}-items-table',
+		itemsTableName: '${sls:stage}-items-table',
 
 		esbuild: {
 			bundle: true,

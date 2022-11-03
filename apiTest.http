@@ -5,7 +5,7 @@ GET {{host}}/items
 ###
 # @name newItem
 POST {{host}}/new
-Content-Type: application/json
+Content-Type: application/json 
 
 {
   "id": 1,

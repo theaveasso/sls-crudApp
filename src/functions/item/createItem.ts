@@ -1,9 +1,11 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
 
 import { formatJSONResponse } from '@libs/api-gateway';
+import { dynamodb } from 'src/model';
 
 export const handler = async (event: APIGatewayProxyEvent) => {
 	try {
+		const tableName = process.env.ITEM_TABLE
 		const data = JSON.parse(event.body);
 
 		if (!data) {
@@ -12,7 +14,9 @@ export const handler = async (event: APIGatewayProxyEvent) => {
 				data: { message: 'Missing Item body' },
 			});
 		}
-
+	
+		const record = await dynamodb.write(data, tableName)
+		
 		return formatJSONResponse({
 			data: { message: 'Item was created successfully...', data },
 		});
