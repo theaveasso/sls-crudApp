@@ -31,6 +31,9 @@ const serverlessConfiguration: AWS = {
 	},
 	package: { individually: true },
 	custom: {
+		
+		itemTableName: '${sls:stage}-items-table',
+
 		esbuild: {
 			bundle: true,
 			minify: false,
