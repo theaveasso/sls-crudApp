@@ -1,10 +1,10 @@
 @host = https://wi1ns6zxjf.execute-api.ap-southeast-1.amazonaws.com
 
-GET {{host}}/getItems
+GET {{host}}/items
 
 ###
 # @name newItem
-POST {{host}}/createItem
+POST {{host}}/new
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ###
-PUT {{host}}/getItems/10
+PUT {{host}}/update/10
 Content-Type: application/json
 
 {

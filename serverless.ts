@@ -1,7 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
-import functions from '@functions/index';
-import dynamoResources from 'src/model/dynamoResources';
+import dynamoDBResource from './resources/dynamoDB';
+import functions from './resources/functions';
 
 const serverlessConfiguration: AWS = {
 	service: 'sls-crudapp',
@@ -20,13 +20,15 @@ const serverlessConfiguration: AWS = {
 		environment: {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
 			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+
+			TASKS_TABLE: '!Ref TasksTable'
 		},
 	},
 	// import the function via paths
 	functions,
 	resources: {
 		Resources: {
-			...dynamoResources
+			...dynamoDBResource
 		}
 	},
 	package: { individually: true },
